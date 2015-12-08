@@ -1,17 +1,26 @@
 require 'capybara'
 require_relative '../../app.rb'
+include Capybara::DSL
 
 describe 'Features' do
-  before do
-    include Capybara::DSL
-    Capybara.default_driver = :selenium
-    visit 'http://localhost:9393/'
+  Capybara.default_driver = :selenium
+
+  feature 'Enter names' do
+    scenario 'submitting names params with form' do
+      sign_in_and_play
+      expect(page).to have_content('Angus VS Computer')
+    end
   end
 
-  it 'can set name param with form' do
-    fill_in('name1', with: 'Angus')
-    fill_in('name2', with: 'Computer')
-    find_button('FIGHT!').click
-    expect(page).to have_content('Angus VS Computer')
+  feature 'Hit points' do
+    scenario 'shows other players HP' do
+      sign_in_and_play
+      expect{page.find('#player1-hp')}.to_not raise_error
+    end
+
+    scenario 'shows other players HP' do
+      sign_in_and_play
+      expect{page.find('#player2-hp')}.to_not raise_error
+    end
   end
 end
