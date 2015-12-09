@@ -1,7 +1,5 @@
-require 'capybara'
 require_relative '../../app.rb'
-include Capybara::DSL
-Capybara.default_driver = :selenium
+
 player1 = 'Pikachu'
 player2 = 'Bulbasaur'
 

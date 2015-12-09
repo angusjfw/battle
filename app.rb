@@ -23,7 +23,7 @@ class Battle < Sinatra::Base
   end
 
   post '/attack' do
-    @player2.ouch!
+    $player1.attack! $player2
     redirect '/attack'
   end
 
