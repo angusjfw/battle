@@ -18,13 +18,6 @@ describe Player do
     end
   end
 
-  describe '#attack!' do
-    it 'hurts other player' do
-      expect(player2).to receive(:ouch!)
-      player.attack! player2
-    end
-  end
-
   describe '#ouch!' do
     it 'reduces hp by 10' do
       expect{player2.ouch!}.to change{player2.hp}.by -10

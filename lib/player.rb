@@ -7,10 +7,6 @@ class Player
     @hp = DEFAULT_HP
   end
 
-  def attack! player
-    player.ouch!
-  end
-
   def ouch!
     @hp -= 10
   end
