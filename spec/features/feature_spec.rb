@@ -27,10 +27,18 @@ describe 'Features' do
   end
 
   feature 'Attack' do
-    scenario 'attack other player and get confirmation' do
+    before do
       sign_in_and_play(player1, player2)
       click_button("ATTACK!")
+    end
+
+    scenario 'attack other player and get confirmation' do
       expect(page).to have_content "You attacked #{player2}!"
+    end
+
+    scenario 'attacking reduces enemy hp by 2' do
+      click_button("OK")
+      expect(page.find('#player2-hp')).to have_content('50/60 HP')
     end
   end
 end
