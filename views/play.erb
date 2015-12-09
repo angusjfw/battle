@@ -1,8 +1,12 @@
-<%= @player1.capitalize %> VS <%= @player2.capitalize %>
+<h2><%= @player1.capitalize %>    VS    <%= @player2.capitalize %></h2>
 
-<div id='player1-hp'>
+<div id='player1-hp' style="width: 240px; float: left;">
   <%= @player1hp %>/60HP
 </div>
-<div id='player2-hp'>
+<div id='player2-hp' style="margin-left: 260px;">
   <%= @player2hp %>/60HP
 </div>
+
+<form action='/attack' method='post'>
+  <input type='submit' value='ATTACK!'>
+</form>
