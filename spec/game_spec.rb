@@ -2,7 +2,7 @@ require 'game'
 
 describe Game do
   let(:player1) { double :player1 }
-  let(:player2) { double :player2, ouch!: nil }
+  let(:player2) { double :player2, ouch!: nil, hp: 666 }
   subject(:game) { described_class.new(player1, player2) }
 
   describe '#initialize' do

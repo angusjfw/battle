@@ -1,5 +1,15 @@
-<h1><%= @game.active_player.name %> attacked <%= @game.inactive_player.name %>!
-<br>
-<form action='/switch_turns' method='post'>
-  <input type='submit' value='OK'>
-</form>
+<% if @game.loser.nil? %>
+  <div id='attack-confirmation'>
+    <h1><%= @game.active_player.name %> attacked 
+      <%= @game.inactive_player.name %>!</h1>
+    <br>
+    <form action='/switch_turns' method='post'>
+      <input type='submit' value='OK'>
+    </form>
+  </div>
+<% else %>
+  <div id='loss-confirmation'>
+    <h1><%= @game.loser.name %> lost!
+  </div>
+<% end %>
+

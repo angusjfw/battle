@@ -75,8 +75,13 @@ describe 'Features' do
   end
 
   feature 'first player to reach 0hp loses' do
-    xscenario '' do
-
+    scenario 'player 2 loses after being attacked 6 times' do
+      sign_in_and_play(player1, player2)
+      10.times do
+        click_button('ATTACK')
+        click_button('OK')
+      end
+      click_button('ATTACK')
       expect(page).to have_content("#{player2} lost!")
     end
   end
