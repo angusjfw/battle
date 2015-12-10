@@ -4,13 +4,25 @@ class Game
   def initialize(player1, player2)
     @player1 = player1
     @player2 = player2
+    @players = [player1, player2]
   end
 
-  def players
-    [player1, player2]
+  def attack! player
+    player.ouch!
   end
 
-  def attack!(player1, player2)
-    player2.ouch!
+  def active_player 
+    players[0]
   end
+
+  def inactive_player 
+    players[1]
+  end
+
+  def switch_turns
+    players.reverse! 
+  end
+  
+  private
+  attr_reader :players
 end

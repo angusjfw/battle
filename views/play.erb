@@ -1,12 +1,37 @@
-<h2><%= @player1.capitalize %>    VS    <%= @player2.capitalize %></h2>
+<h2><%= @game.player1.name %>    VS    <%= @game.player2.name %></h2>
 
-<div id='player1-hp' style="width: 240px; float: left;">
-  <%= @player1hp %>/60 HP
-</div>
-<div id='player2-hp' style="margin-left: 260px;">
-  <%= @player2hp %>/60 HP
+<div id='player2'>
+  <%= @game.player2.name %>
+  
+  <div id='player2-hp'>
+    <%= @game.player2.hp %>/60 HP
+  </div>
+
+  <% if @game.active_player == @game.player2 %>
+    <div id='player2-controls'>
+      <form action='/attack' method='post'>
+        <input type='submit' value='ATTACK!'>
+      </form>
+    </div>
+  <% end %>
 </div>
 
-<form action='/attack' method='post'>
-  <input type='submit' value='ATTACK!'>
-</form>
+<br><br><br><br><br>
+
+<div id='player1'>
+  <%= @game.player1.name %>
+
+  <div id='player1-hp'>
+    <%= @game.player1.hp %>/60 HP
+  </div>
+
+  <% if @game.active_player == @game.player1 %>
+    <div id='player1-controls'>
+      <form action='/attack' method='post'>
+        <input type='submit' value='ATTACK!'>
+      </form>
+    </div>
+  <% end %>
+</div>
+
+

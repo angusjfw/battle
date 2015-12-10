@@ -1,5 +1,5 @@
-<h1>You attacked <%= @player2 %>
+<h1><%= @game.active_player.name %> attacked <%= @game.inactive_player.name %>!
 <br>
-<form action='/play'>
+<form action='/switch_turns' method='post'>
   <input type='submit' value='OK'>
 </form>

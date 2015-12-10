@@ -1,34 +1,37 @@
 require 'sinatra/base'
-require_relative './lib/player.rb'
-require_relative './lib/game.rb'
+require_relative './lib/player'
+require_relative './lib/game'
 
 class Battle < Sinatra::Base
-
   get '/' do
     erb :index
   end
   
   post '/names' do
-    $game = Game.new(Player.new(params[:name1]), Player.new(params[:name2]))
+    player1 = Player.new(params[:name1])
+    player2 = Player.new(params[:name2]) 
+    $game = Game.new(player1, player2)
     redirect '/play'
   end     
 
   get '/play' do
-    @player1 = $game.player1.name
-    @player2 = $game.player2.name
-    @player1hp = $game.player1.hp
-    @player2hp = $game.player2.hp
+    @game = $game
     erb :play
   end
 
   post '/attack' do
-    $game.attack! $game.player1, $game.player2
-    redirect '/attack'
+    $game.attack! $game.inactive_player
+    redirect '/attacked'
   end
 
-  get '/attack' do
-    @player2 = $game.player2.name
-    erb :attack
+  get '/attacked' do
+    @game = $game
+    erb :attacked
+  end
+
+  post '/switch_turns' do
+    $game.switch_turns
+    redirect '/play'
   end
 
   run! if app_file == $0
