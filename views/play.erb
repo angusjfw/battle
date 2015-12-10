@@ -1,5 +1,3 @@
-<!--h2><%= @game.player1.name %>    VS    <%= @game.player2.name %></h2-->
-
 <div id='player2'>
   <%= @game.player2.name %>
 
@@ -11,7 +9,7 @@
     <img src='images/bulba.png' alt="Player 2" style='width: 304px;'>
   </div>
 
-  <% if @game.active_player == @game.player2 %>
+  <% if @game.active_player == @game.player2 && @game.loser.nil? %>
     <div id='player2-controls'>
       <form action='/attack' method='post'>
         <input type='submit' value='ATTACK!'>
@@ -31,7 +29,7 @@
     <img src='images/pika.png' alt="Player 1" style='width: 304px;'>
   </div>
 
-  <% if @game.active_player == @game.player1 %>
+  <% if @game.active_player == @game.player1 && @game.loser.nil? %>
     <div id='player1-controls'>
       <form action='/attack' method='post'>
         <input type='submit' value='ATTACK!'>

@@ -1,10 +1,10 @@
 <% if @game.move == :attack %>
   <div id='attack-confirmation'>
-    <h3><%= @game.active_player.name %> attacked 
-    <%= @game.inactive_player.name %>!</h3>
+    <h3><%= @game.inactive_player.name %> attacked 
+    <%= @game.active_player.name %>!</h3>
     <% if @game.damage >= 20 %>It's super effective!<% end %>
     <br>
-    <%= @game.inactive_player.name %> took
+    <%= @game.active_player.name %> took
     <%= @game.damage %> damage!
     <br>
   </div>

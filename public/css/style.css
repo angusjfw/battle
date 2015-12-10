@@ -26,6 +26,12 @@ body{
   font-size: 115%;
 }
 
+#loss-confirmation{
+  font-family: "PokemonHollow", Helvetica;
+  text-shadow: white 0px 0px 10px;
+  font-size: 115%;
+}
+
 #player1{
   position: absolute;
   padding: 25px;

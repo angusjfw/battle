@@ -6,8 +6,8 @@ player2 = 'Bulbasaur'
 describe 'Features' do
   feature 'Enter names' do
     scenario 'submitting names params with form' do
-      sign_in_and_play(player1, player2)
-      expect(page).to have_content("#{player1} VS #{player2}")
+      sign_in_and_play('Squirtle', player2)
+      expect(page).to have_content('Squirtle')
     end
   end
 
@@ -39,7 +39,6 @@ describe 'Features' do
       sign_in_and_play(player1, player2)
       allow(Kernel).to receive(:rand).and_return 5
       click_button("ATTACK!")
-      click_button("OK")
     end
 
     scenario 'attacking reduces enemy hp' do
@@ -62,13 +61,11 @@ describe 'Features' do
 
     scenario 'player2 attacking reduces player1 hp' do
       click_button('ATTACK')
-      click_button('OK')
       expect(page.find('#player1-hp')).to have_content('50/60 HP')
     end
 
     scenario 'switches back to player1s turn' do
       click_button('ATTACK')
-      click_button('OK')
       expect{page.find('#player1-controls')}.to_not raise_error    
       expect{page.find('#player2-controls')}.
         to raise_error(Capybara::ElementNotFound)   
@@ -80,7 +77,7 @@ describe 'Features' do
       sign_in_and_play(player1, player2)
       allow(Kernel).to receive(:rand).and_return 60
       click_button('ATTACK')
-      expect(page).to have_content("#{player2} lost!")
+      expect(page).to have_content("#{player2} has fainted!")
     end
   end
 end

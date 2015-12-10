@@ -23,7 +23,7 @@ class Game
   end
 
   def switch_turns
-    players.reverse! 
+    players.reverse!
   end
   
   private
