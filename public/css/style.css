@@ -15,9 +15,18 @@ body{
   -o-background-size: cover;
   background-size: cover;
   text-align: center;
-  font-family: "PokemonSolid", Helvetica;
+  font-family: 'PokemonSolid', Helvetica;
   font-size: 200%;
   text-shadow: white 0px 0px 10px;
+}
+
+input[type='submit'] {
+  margin: 10px auto;
+  font-family: 'PokemonSolid', Helvetica;
+  font-size: 100%;
+  display:block;
+  background:#ccc;
+  cursor:pointer;
 }
 
 #title{
@@ -27,17 +36,18 @@ body{
 }
 
 #loss-confirmation{
+  position: relative;
+  top: 40px;
   font-family: "PokemonHollow", Helvetica;
   text-shadow: white 0px 0px 10px;
-  font-size: 115%;
+  font-size: 125%;
 }
 
 #player1{
   position: absolute;
   padding: 25px;
   height: 250px;
-  width: 250px;
-  bottom: 200px;
+  bottom: 150px;
   left: 100px;
   float: left;
 }
@@ -45,19 +55,32 @@ body{
 #player2{
   position: absolute;
   padding: 25px;
+  width: 600px;
   height: 250px;
-  width: 250px;
-  top: 50px;
-  right: 100px;
+  top: 200px;
+  right: 0px;
   float: right;
 }
 
-/*
-.player-image{
-  width: 304px;
-  display: block;
+#player1-status{
+  float: left;
+  overflow: hidden;
 }
-*/
 
+#player1-controls{
+  position: relative;
+  top: 200px;
+  overflow: hidden;
+}
 
+#player2-controls{
+  float: left;
+  bottom: 200px;
+  overflow: hidden;
+}
 
+#player2-status{
+  position: relative
+  float: right;
+  overflow: hidden;
+}

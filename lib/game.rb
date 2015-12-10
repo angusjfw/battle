@@ -31,7 +31,7 @@ class Game
 
   def rand_damage
     damage = Kernel.rand(10) + 5
-    damage += 20 if Kernel.rand(10) == 0
+    damage += 15 if Kernel.rand(7) == 0
     @damage = damage
   end
 end
