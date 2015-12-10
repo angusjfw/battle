@@ -7,7 +7,7 @@ class Player
     @hp = DEFAULT_HP
   end
 
-  def ouch!
-    @hp -= 10
+  def damage! damage
+    @hp -= damage
   end
 end

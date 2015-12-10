@@ -18,9 +18,9 @@ describe Player do
     end
   end
 
-  describe '#ouch!' do
+  describe '#damage!' do
     it 'reduces hp by 10' do
-      expect{player2.ouch!}.to change{player2.hp}.by -10
+      expect{ player2.damage! 10 }.to change{ player2.hp }.by -10
     end
   end
 end

@@ -8,8 +8,10 @@ class Battle < Sinatra::Base
   end
   
   post '/names' do
-    player1 = Player.new(params[:name1])
-    player2 = Player.new(params[:name2]) 
+    name1 = 'Pikachu' if params[:name1] = ''
+    name2 = 'Bulbasaur' if params[:name2] = ''
+    player1 = Player.new(name1)
+    player2 = Player.new(name2)
     $game = Game.new(player1, player2)
     redirect '/play'
   end     

@@ -1,10 +1,14 @@
-<h2><%= @game.player1.name %>    VS    <%= @game.player2.name %></h2>
+<!--h2><%= @game.player1.name %>    VS    <%= @game.player2.name %></h2-->
 
 <div id='player2'>
   <%= @game.player2.name %>
-  
+
   <div id='player2-hp'>
     <%= @game.player2.hp %>/60 HP
+  </div>
+
+  <div id='player2-image' class='player-image'>
+    <img src='images/bulba.png' alt="Player 2" style='width: 304px;'>
   </div>
 
   <% if @game.active_player == @game.player2 %>
@@ -16,13 +20,15 @@
   <% end %>
 </div>
 
-<br><br><br><br><br>
-
 <div id='player1'>
   <%= @game.player1.name %>
 
   <div id='player1-hp'>
     <%= @game.player1.hp %>/60 HP
+  </div>
+
+  <div id='player1-image' class='player-image'>
+    <img src='images/pika.png' alt="Player 1" style='width: 304px;'>
   </div>
 
   <% if @game.active_player == @game.player1 %>

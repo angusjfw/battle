@@ -37,11 +37,12 @@ describe 'Features' do
   feature 'process and switch turn' do
     before do
       sign_in_and_play(player1, player2)
+      allow(Kernel).to receive(:rand).and_return 5
       click_button("ATTACK!")
       click_button("OK")
     end
 
-    scenario 'attacking reduces enemy hp by 10' do
+    scenario 'attacking reduces enemy hp' do
       expect(page.find('#player2-hp')).to have_content('50/60 HP')
     end
 
@@ -77,10 +78,7 @@ describe 'Features' do
   feature 'first player to reach 0hp loses' do
     scenario 'player 2 loses after being attacked 6 times' do
       sign_in_and_play(player1, player2)
-      10.times do
-        click_button('ATTACK')
-        click_button('OK')
-      end
+      allow(Kernel).to receive(:rand).and_return 60
       click_button('ATTACK')
       expect(page).to have_content("#{player2} lost!")
     end
