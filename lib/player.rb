@@ -9,5 +9,6 @@ class Player
 
   def damage! damage
     @hp -= damage
+    @hp = 0 if hp < 0
   end
 end

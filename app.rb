@@ -23,15 +23,6 @@ class Battle < Sinatra::Base
 
   post '/attack' do
     $game.attack! $game.inactive_player
-    redirect '/attacked'
-  end
-
-  get '/attacked' do
-    @game = $game
-    erb :attacked
-  end
-
-  post '/switch_turns' do
     $game.switch_turns
     redirect '/play'
   end

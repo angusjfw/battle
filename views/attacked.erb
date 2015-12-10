@@ -1,22 +1,18 @@
-<% if @game.loser.nil? %>
+<% if @game.move == :attack %>
   <div id='attack-confirmation'>
     <h3><%= @game.active_player.name %> attacked 
     <%= @game.inactive_player.name %>!</h3>
-    <br>
-    <% if @game.damage >= 20 %>
-      It's super effective! 
-    <% end %>
+    <% if @game.damage >= 20 %>It's super effective!<% end %>
     <br>
     <%= @game.inactive_player.name %> took
     <%= @game.damage %> damage!
     <br>
-    <form action='/switch_turns' method='post'>
-      <input type='submit' value='OK'>
-    </form>
   </div>
-<% else %>
-  <div id='loss-confirmation'>
-    <h1><%= @game.loser.name %> has fainted!
-  </div>
+
+  <% unless @game.loser.nil? %>
+    <div id='loss-confirmation'>
+      <h1><%= @game.loser.name %> has fainted!
+    </div>
+  <% end %>
 <% end %>
 

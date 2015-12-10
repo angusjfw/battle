@@ -3,6 +3,11 @@
   src: url(../fonts/PokemonSolid.ttf) format("truetype");
 }
 
+@font-face {
+  font-family: "PokemonHollow";
+  src: url(../fonts/PokemonHollow.ttf) format("truetype");
+}
+
 body{
   background: url('http://cdn.bulbagarden.net/upload/4/4e/HGSS_Ilex_Forest-Morning.png') no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -12,6 +17,13 @@ body{
   text-align: center;
   font-family: "PokemonSolid", Helvetica;
   font-size: 200%;
+  text-shadow: white 0px 0px 10px;
+}
+
+#title{
+  font-family: "PokemonHollow", Helvetica;
+  text-shadow: white 0px 0px 10px;
+  font-size: 115%;
 }
 
 #player1{

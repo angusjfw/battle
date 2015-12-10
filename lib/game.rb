@@ -1,5 +1,5 @@
 class Game
-  attr_reader :player1, :player2, :loser, :damage
+  attr_reader :player1, :player2, :loser, :damage, :move
 
   def initialize(player1, player2)
     @player1 = player1
@@ -9,6 +9,7 @@ class Game
   end
 
   def attack! player
+    @move = :attack
     player.damage! rand_damage
     @loser = player if player.hp <= 0
   end
