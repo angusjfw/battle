@@ -14,11 +14,11 @@ class Game
     rand_start([player1, player2], ai)
   end
 
-  def attack!(player, type)
+  def attack!(active, inactive, type)
     @prev_move = move
     @move = type
-    eval_attack(player, type)
-    @loser = player if player.hp <= 0 && loser.nil?
+    eval_attack(active, inactive, type)
+    @loser = inactive if inactive.hp <= 0 && loser.nil?
   end
 
   def active_player 
@@ -42,12 +42,13 @@ class Game
     r = Kernel.rand(2)
     @players = [playas[r], playas[(r+1)%2]]
     if ai && players[0] == player2
-      attack! player1
+      attack!(player2, player1, 'attack')
       switch_turns
     end
   end
 
   def poison_damage players
     players.each{ |player| player.poison_effect if player.poison > 0 }
+    players.each{ |player| @loser = player if player.hp == 0 }
   end
 end

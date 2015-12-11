@@ -23,6 +23,12 @@ class Player
     @hp = 0 if hp < 0
   end
 
+  def heal!
+    @hp += 10
+    @hp = 60 if hp > 60
+    @poison = 0
+  end
+
   def revive!
     @hp = DEFAULT_HP
     @poison = 0

@@ -1,10 +1,12 @@
 module Attack
-  def eval_attack(player, type)
+  def eval_attack(active, inactive, type)
     case type
     when 'attack'
-      player.damage! rand_damage
+      inactive.damage! rand_damage
     when 'poison'
-      player.poison!
+      inactive.poison!
+    when 'heal'
+      active.heal!
     end
   end
 

@@ -25,10 +25,12 @@ class Battle < Sinatra::Base
 
   post '/attack' do
     move = params.keys[0]
-    $game.attack!($game.inactive_player, move)
+    $game.attack!($game.active_player, $game.inactive_player, move)
     $game.switch_turns
     if $game.ai && $game.loser.nil?
-      $game.attack!($game.inactive_player, 'attack')
+      moves = ['attack', 'poison', 'heal']
+      ai_move = moves[Kernel.rand(3)]
+      $game.attack!($game.active_player, $game.inactive_player, ai_move)
       $game.switch_turns
     end
     redirect '/play'

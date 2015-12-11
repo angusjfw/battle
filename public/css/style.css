@@ -45,10 +45,6 @@ input[type='submit'] {
   font-size: 35%;
 }
 
-#attack-confirmation{
-  font-family: "PokemonHollow";
-}
-
 #loss-confirmation{
   position: relative;
   top: 40px;

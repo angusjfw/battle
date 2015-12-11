@@ -11,6 +11,7 @@
   <%= @game.player1.name %>
   <div id='player1-hp'>
     <%= @game.player1.hp %>/60 HP
+    <% if @game.player1.poison > 0 %> <img src='images/psn.png'> <% end %>
   </div>
   
   <div id='player1-image'>
@@ -26,6 +27,7 @@
   <%= @game.player2.name %>
   <div id='player2-hp'>
     <%= @game.player2.hp %>/60 HP
+    <% if @game.player2.poison > 0 %> <img src='images/psn.png'> <% end %>
   </div>
 
   <div id='player2-image'>
@@ -42,6 +44,7 @@
     <form action='/attack' method='post'>
       <input type='submit' name='attack' value='ATTACK'>
       <input type='submit' name='poison' value='POISON'>
+      <input type='submit' name='heal' value='HEAL'>
     </form>
   </div>
 <% end %>

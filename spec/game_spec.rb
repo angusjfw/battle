@@ -14,7 +14,7 @@ describe Game do
   describe '#attack' do
     it 'one player attacks another player' do
       expect(player2).to receive(:damage!)
-      game.attack!(player2, 'attack')
+      game.attack!(player1, player2, 'attack')
     end
   end
 
