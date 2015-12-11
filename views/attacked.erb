@@ -1,3 +1,16 @@
+<% if @game.ai && @game.loser != @game.player2 %>
+  <% if @game.prev_move == :attack %>
+    <div id='attack-confirmation'>
+      <h3><%= @game.active_player.name %> attacked 
+      <%= @game.inactive_player.name %>...</h3>
+      <% if @game.prev_damage >= 20 %>It was super effective!<% end %>
+      <% if @game.prev_damage == 0 %>But he missed!<% end %>
+      <%= @game.inactive_player.name %> took
+      <%= @game.prev_damage %> damage!
+    </div>
+  <% end %>
+<% end %>
+
 <% if @game.move == :attack %>
   <div id='attack-confirmation'>
     <h3><%= @game.inactive_player.name %> attacked 
@@ -7,14 +20,14 @@
     <%= @game.active_player.name %> took
     <%= @game.damage %> damage!
   </div>
+<% end %>
 
-  <% unless @game.loser.nil? %>
-    <div id='loss-confirmation'>
-      <h1><%= @game.loser.name %><br> has <br>fainted!
-    </div>
-    <form action='/restart'>
-      <input type='submit' value='Play again...'>
-    </form>
-  <% end %>
+<% unless @game.loser.nil? %>
+  <div id='loss-confirmation'>
+    <h1><%= @game.loser.name %><br> has <br>fainted!
+  </div>
+  <form action='/restart'>
+    <input type='submit' value='Play again...'>
+  </form>
 <% end %>
 

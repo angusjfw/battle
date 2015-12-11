@@ -80,4 +80,16 @@ describe 'Features' do
       expect(page).to have_content("#{player2} has fainted!")
     end
   end
+
+  feature 'ai player' do
+    scenario 'user chooses to play against AI' do  
+      sign_in_and_play_ai(player1, player2)
+      allow(Kernel).to receive(:rand).and_return 5
+      click_button('ATTACK')
+      expect(page).to have_content('Pikachu 50/60 HP Bulbasaur 50/60 HP '\
+                                   'Pikachu attacked Bulbasaur... Bulbasaur '\
+                                   'took 10 damage! Bulbasaur attacked '\
+                                   'Pikachu... Pikachu took 10 damage!')
+    end
+  end
 end

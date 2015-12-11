@@ -15,14 +15,14 @@ body{
   -o-background-size: cover;
   background-size: cover;
   text-align: center;
-  font-family: 'PokemonHollow', Helvetica;
+  font-family: 'PokemonHollow';
   font-size: 200%;
   text-shadow: white 0px 0px 10px;
 }
 
 input[type='submit'] {
   margin: 10px auto;
-  font-family: 'PokemonSolid', Helvetica;
+  font-family: 'PokemonSolid';
   font-size: 100%;
   text-shadow: white 0px 0px 10px;
   display:block;
@@ -31,22 +31,27 @@ input[type='submit'] {
 }
 
 #title{
-  font-family: "PokemonHollow", Helvetica;
+  font-family: "PokemonHollow";
   font-size: 115%;
 }
 
 #sign-in{
-  font-family: "PokemonSolid", Helvetica;
+  font-family: "PokemonSolid";
+}
+
+#ai{
+  font-family: Arial;
+  font-size: 35%;
 }
 
 #attack-confirmation{
-  font-family: "PokemonHollow", Helvetica;
+  font-family: "PokemonHollow";
 }
 
 #loss-confirmation{
   position: relative;
   top: 40px;
-  font-family: "PokemonSolid", Helvetica;
+  font-family: "PokemonSolid";
   text-shadow: white 0px 0px 10px;
   font-size: 125%;
 }
@@ -58,7 +63,7 @@ input[type='submit'] {
   bottom: 0px;
   left: 100px;
   float: left;
-  font-family: 'PokemonSolid', Helvetica;
+  font-family: 'PokemonSolid';
 }
 
 #player2{
@@ -68,7 +73,7 @@ input[type='submit'] {
   bottom: 0px;
   right: 100px;
   float: right;
-  font-family: 'PokemonSolid', Helvetica;
+  font-family: 'PokemonSolid';
 }
 
 .pika-pwned{

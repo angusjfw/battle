@@ -1,18 +1,21 @@
 class Game
-  attr_reader :player1, :player2, :loser, :damage, :move, :turns
+  attr_reader :player1, :player2, :loser, :damage, :move, :turns, :ai, 
+    :prev_damage, :prev_move
 
-  def initialize(player1, player2)
+  def initialize(player1, player2, ai)
     @player1 = player1
     @player2 = player2
-    rand_start([player1, player2])
     @loser = nil
     @turns = 0
+    @ai = ai
+    rand_start([player1, player2], ai)
   end
 
   def attack! player
+    @prev_move = move
     @move = :attack
     player.damage! rand_damage
-    @loser = player if player.hp <= 0
+    @loser = player if player.hp <= 0 && loser.nil?
   end
 
   def active_player 
@@ -32,14 +35,19 @@ class Game
   attr_reader :players
 
   def rand_damage
-    damage = Kernel.rand(10) + 5
-    damage += 15 if Kernel.rand(7) == 0
-    damage = 0 if Kernel.rand(10) == 0
-    @damage = damage
+    @prev_damage = damage
+    new_damage = Kernel.rand(10) + 5
+    new_damage += 15 if Kernel.rand(7) == 0
+    new_damage = 0 if Kernel.rand(10) == 0
+    @damage = new_damage
   end
 
-  def rand_start (playas)
+  def rand_start (playas, ai)
     r = Kernel.rand(2)
     @players = [playas[r], playas[(r+1)%2]]
+    if ai && players[0] == player2
+      attack! player1
+      switch_turns
+    end
   end
 end
