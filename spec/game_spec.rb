@@ -11,10 +11,10 @@ describe Game do
     end
   end
 
-  describe '#attack' do
+  describe '#take_turn' do
     it 'one player attacks another player' do
       expect(player2).to receive(:damage!)
-      game.attack!(player1, player2, 'attack')
+      game.take_turn(player1, player2, 'attack')
     end
   end
 

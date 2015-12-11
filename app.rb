@@ -10,7 +10,7 @@ class Battle < Sinatra::Base
     erb :index
   end
   
-  post '/names' do
+  post '/sign-in' do
     ai = !!params['ai']
     name1 = params[:name1] == '' ? 'Pikachu':params[:name1]
     name2 = params[:name2] == '' ? 'Bulbasaur':params[:name2]
@@ -25,12 +25,10 @@ class Battle < Sinatra::Base
   end
 
   post '/attack' do
-    move = params.keys[0]
-    $game.attack!($game.active_player, $game.inactive_player, move)
+    type = params.keys[0]
+    $game.take_turn($game.active_player, $game.inactive_player, type)
     $game.switch_turns
-    if $game.ai && $game.loser.nil?
-      ai_attack_and_switch
-    end
+    ai_attack_and_switch if $game.ai && $game.loser.nil?
     redirect '/play'
   end
 

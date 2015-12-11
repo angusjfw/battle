@@ -8,13 +8,16 @@ class Game
   def initialize(player1, player2, ai)
     @player1 = player1
     @player2 = player2
-    @loser = nil
-    @turns = 0
     @ai = ai
+    @loser = nil
+    @move = ''
+    @turns = 0
+    @damage = 0
+    @prev_damage = 0
     rand_start([player1, player2], ai)
   end
 
-  def attack!(active, inactive, type)
+  def take_turn(active, inactive, type)
     @prev_move = move
     @move = type
     eval_attack(active, inactive, type)
@@ -38,7 +41,7 @@ class Game
   private
   attr_reader :players
 
-  def rand_start (playas, ai)
+  def rand_start(playas, ai)
     r = Kernel.rand(2)
     @players = [playas[r], playas[(r+1)%2]]
     if ai && players[0] == player2
