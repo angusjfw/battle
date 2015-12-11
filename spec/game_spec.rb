@@ -12,9 +12,11 @@ describe Game do
   end
 
   describe '#take_turn' do
-    it 'one player attacks another player' do
+    it 'active player can attack other player' do
+      allow(Kernel).to receive(:rand).and_return 0
+      game = Game.new(player1, player2, false)
       expect(player2).to receive(:damage!)
-      game.take_turn(player1, player2, 'attack')
+      game.take_turn('attack')
     end
   end
 

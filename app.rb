@@ -26,7 +26,7 @@ class Battle < Sinatra::Base
 
   post '/attack' do
     type = params.keys[0]
-    $game.take_turn($game.active_player, $game.inactive_player, type)
+    $game.take_turn(type)
     $game.switch_turns
     ai_attack_and_switch if $game.ai && $game.loser.nil?
     redirect '/play'

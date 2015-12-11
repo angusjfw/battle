@@ -17,11 +17,11 @@ class Game
     rand_start([player1, player2], ai)
   end
 
-  def take_turn(active, inactive, type)
+  def take_turn(type)
     @prev_move = move
     @move = type
-    eval_attack(active, inactive, type)
-    @loser = inactive if inactive.hp <= 0 && loser.nil?
+    eval_attack(active_player, inactive_player, type)
+    @loser = inactive_player if inactive_player.hp <= 0 && loser.nil?
   end
 
   def active_player 
@@ -45,7 +45,7 @@ class Game
     r = Kernel.rand(2)
     @players = [playas[r], playas[(r+1)%2]]
     if ai && players[0] == player2
-      attack!(player2, player1, 'attack')
+      take_turn('attack')
       switch_turns
     end
   end

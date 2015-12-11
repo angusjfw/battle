@@ -10,7 +10,7 @@
   <% if @game.prev_move == 'poison' %>
     <h3><%= @game.active_player.name %> poisoned 
     <%= @game.inactive_player.name %>...</h3>
-    He will take 7 poison damage for 3 turns.
+    He will take 7 damage for 3 turns.
   <% end %>
   <% if @game.prev_move == 'heal' %>
     <h3><%= @game.active_player.name %> has been healed!</h3>
@@ -30,7 +30,7 @@
 <% if @game.move == 'poison' %>
   <h3><%= @game.inactive_player.name %> poisoned 
   <%= @game.active_player.name %>...</h3>
-  He will take 7 poison damage for 3 turns.
+  He will take 7 damage for 3 turns.
 <% end %>
 
 <% if @game.move == 'heal' %>
