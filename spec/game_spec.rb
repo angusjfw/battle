@@ -20,18 +20,24 @@ describe Game do
 
   describe '#active_player' do
     it 'active player switches after each turn' do
+      allow(Kernel).to receive(:rand).and_return 0
+      game = Game.new(player1, player2)
       expect(game.active_player).to eq player1
     end
   end
 
   describe '#inactive_player' do
     it ' returns the player who is not having their turn' do
+      allow(Kernel).to receive(:rand).and_return 0
+      game = Game.new(player1, player2)
       expect(game.inactive_player).to eq player2
     end
   end
  
   describe '#switch_turns' do
     it 'switches active and inactive player' do
+      allow(Kernel).to receive(:rand).and_return 0
+      game = Game.new(player1, player2)
       game.switch_turns
       expect(game.active_player).to eq player2
     end

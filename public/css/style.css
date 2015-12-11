@@ -9,13 +9,13 @@
 }
 
 body{
-  background: url('http://cdn.bulbagarden.net/upload/4/4e/HGSS_Ilex_Forest-Morning.png') no-repeat center center fixed;
+  background: url('../images/pokescape-normal.png') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   text-align: center;
-  font-family: 'PokemonSolid', Helvetica;
+  font-family: 'PokemonHollow', Helvetica;
   font-size: 200%;
   text-shadow: white 0px 0px 10px;
 }
@@ -24,6 +24,7 @@ input[type='submit'] {
   margin: 10px auto;
   font-family: 'PokemonSolid', Helvetica;
   font-size: 100%;
+  text-shadow: white 0px 0px 10px;
   display:block;
   background:#ccc;
   cursor:pointer;
@@ -31,56 +32,63 @@ input[type='submit'] {
 
 #title{
   font-family: "PokemonHollow", Helvetica;
-  text-shadow: white 0px 0px 10px;
   font-size: 115%;
+}
+
+#sign-in{
+  font-family: "PokemonSolid", Helvetica;
+}
+
+#attack-confirmation{
+  font-family: "PokemonHollow", Helvetica;
 }
 
 #loss-confirmation{
   position: relative;
   top: 40px;
-  font-family: "PokemonHollow", Helvetica;
+  font-family: "PokemonSolid", Helvetica;
   text-shadow: white 0px 0px 10px;
   font-size: 125%;
 }
 
 #player1{
   position: absolute;
+  top: 350px;
   padding: 25px;
-  height: 250px;
-  bottom: 150px;
+  bottom: 0px;
   left: 100px;
   float: left;
+  font-family: 'PokemonSolid', Helvetica;
 }
 
 #player2{
   position: absolute;
+  top: 350px;
   padding: 25px;
-  width: 600px;
-  height: 250px;
-  top: 200px;
-  right: 0px;
+  bottom: 0px;
+  right: 100px;
   float: right;
+  font-family: 'PokemonSolid', Helvetica;
 }
 
-#player1-status{
-  float: left;
-  overflow: hidden;
+.pika-pwned{
+  position: relative;
+  top: 35px;
+  width: 330px;
 }
 
 #player1-controls{
-  position: relative;
-  top: 200px;
-  overflow: hidden;
+  position: absolute;
+  display: block;
+  top: 450px;
+  float: left;
+  left: 430px; 
 }
 
 #player2-controls{
-  float: left;
-  bottom: 200px;
-  overflow: hidden;
-}
-
-#player2-status{
-  position: relative
+  position: absolute;
+  display: block;
+  top: 450px;
   float: right;
-  overflow: hidden;
+  right: 430px; 
 }

@@ -1,56 +1,49 @@
-<div id='player2'>
-  <div id='player2-status'>
-    <%= @game.player2.name %>
-      
-    <div id='player2-hp'>
-      <%= @game.player2.hp %>/60 HP
-    </div>
+<% unless @game.loser.nil? %> 
+  <body style="background: url('images/pokescape-red.png') no-repeat center center fixed;">
+<% end %>  
 
-    <div id='player2-image' class='player-image'>
-      <% if @game.loser == @game.player2 %>
-        <img src='images/bulba_pwned.png' alt="pwned" style='width: 250px;'>
-      <% else %>
-        <img src='images/bulba.png' alt="Player 2" style='width: 305px;'>
-      <% end %>  
-    </div>
-  </div>
+<% if @game.turns == 0 %>
+  <h3><%= @game.active_player.name %> goes first...</h3>
+<% end %>
 
-
-  <% if @game.active_player == @game.player2 && @game.loser.nil? %>
-    <div id='player2-controls'>
-      <form action='/attack' method='post'>
-        <input type='submit' value='ATTACK!'>
-      </form>
-    </div>
-  <% end %>
-</div>
 
 <div id='player1'>
-    <div id="player1-status">
-      <%= @game.player1.name %>
-      
-      <div id='player1-hp'>
-        <%= @game.player1.hp %>/60 HP
-      </div>
-
-      <div id='player1-image' class='player-image'>
-        <% if @game.loser == @game.player1 %>
-          <img src='images/pika_pwned.png' alt="pwned" style='width: 330px;'>
-        <% else %>
-          <img src='images/pika.png' alt="Player 1" style='width: 305px;'>
-        <% end %>
-      </div>
-    </div>
-
-    <% if @game.active_player == @game.player1 && @game.loser.nil? %>
-      <div id="player1-controls">
-          <form action='/attack' method='post'>
-            <input type='submit' value='ATTACK!'>
-          </form>
-      </div>
+  <%= @game.player1.name %>
+  <div id='player1-hp'>
+    <%= @game.player1.hp %>/60 HP
+  </div>
+  
+  <div id='player1-image'>
+    <% if @game.loser == @game.player1 %>
+      <img src='images/pika_pwned.png' alt="pwned" class='pika-pwned'>
+    <% else %>
+      <img src='images/pika.png' alt="Player 1" style='width: 305px;'>
     <% end %>
+  </div>
 </div>
 
+<div id='player2'>
+  <%= @game.player2.name %>
+  <div id='player2-hp'>
+    <%= @game.player2.hp %>/60 HP
+  </div>
+
+  <div id='player2-image'>
+    <% if @game.loser == @game.player2 %>
+      <img src='images/bulba_pwned.png' alt="pwned" style='width: 230px;'>
+    <% else %>
+      <img src='images/bulba.png' alt="Player 2" style='width: 290px;'>
+    <% end %>  
+  </div>
+</div>
+
+<% if @game.loser.nil? %>
+  <div id='<%= @game.active_player == @game.player1 ? 'player1':'player2' %>-controls'>
+    <form action='/attack' method='post'>
+      <input type='submit' value='ATTACK!'>
+    </form>
+  </div>
+<% end %>
+
 <%= erb :attacked %>
-
-
+</body>

@@ -30,7 +30,7 @@ describe 'Features' do
     end
 
     scenario 'attack other player and get confirmation' do
-      expect(page).to have_content "#{player1} attacked #{player2}!"
+      expect(page).to have_content "#{player1} attacked #{player2}..."
     end
   end
 
@@ -56,7 +56,7 @@ describe 'Features' do
 
     scenario 'player can now atttack' do
       click_button('ATTACK')
-      expect(page).to have_content "#{player2} attacked #{player1}!"
+      expect(page).to have_content "#{player2} attacked #{player1}..."
     end
 
     scenario 'player2 attacking reduces player1 hp' do
