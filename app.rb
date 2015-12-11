@@ -1,8 +1,11 @@
 require 'sinatra/base'
 require_relative './lib/player'
 require_relative './lib/game'
+require_relative './lib/ai'
 
 class Battle < Sinatra::Base
+  include AI
+
   get '/' do
     erb :index
   end
@@ -11,9 +14,7 @@ class Battle < Sinatra::Base
     ai = !!params['ai']
     name1 = params[:name1] == '' ? 'Pikachu':params[:name1]
     name2 = params[:name2] == '' ? 'Bulbasaur':params[:name2]
-    player1 = Player.new(name1)
-    player2 = Player.new(name2)
-    $game = Game.new(player1, player2, ai)
+    $game = Game.new(Player.new(name1), Player.new(name2), ai)
     redirect '/play'
   end     
 
@@ -28,10 +29,7 @@ class Battle < Sinatra::Base
     $game.attack!($game.active_player, $game.inactive_player, move)
     $game.switch_turns
     if $game.ai && $game.loser.nil?
-      moves = ['attack', 'poison', 'heal']
-      ai_move = moves[Kernel.rand(3)]
-      $game.attack!($game.active_player, $game.inactive_player, ai_move)
-      $game.switch_turns
+      ai_attack_and_switch
     end
     redirect '/play'
   end
