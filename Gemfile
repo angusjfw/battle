@@ -3,5 +3,7 @@ ruby '2.2.3'
 
 gem 'sinatra'
 gem 'capybara'
-gem 'respec'
+gem 'rspec'
 gem 'rspec-sinatra'
+gem 'coveralls', require: false
+
