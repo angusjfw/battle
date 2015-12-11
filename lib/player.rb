@@ -11,4 +11,9 @@ class Player
     @hp -= damage
     @hp = 0 if hp < 0
   end
+
+  def revive!
+    @hp = DEFAULT_HP
+    self
+  end
 end

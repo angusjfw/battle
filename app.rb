@@ -27,5 +27,12 @@ class Battle < Sinatra::Base
     redirect '/play'
   end
 
+  get '/restart' do
+    player1 = $game.player1.revive!
+    player2 = $game.player2.revive!
+    $game = Game.new(player1, player2)
+    redirect '/play'
+  end
+
   run! if app_file == $0
 end
