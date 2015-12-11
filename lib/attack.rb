@@ -10,6 +10,11 @@ module Attack
     end
   end
 
+  def poison_damage players
+    players.each{ |player| player.poison_effect if player.poison > 0 }
+    players.each{ |player| @loser = player if player.hp == 0 }
+  end
+
   private 
   
   def rand_damage

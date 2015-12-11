@@ -46,9 +46,4 @@ class Game
       switch_turns
     end
   end
-
-  def poison_damage players
-    players.each{ |player| player.poison_effect if player.poison > 0 }
-    players.each{ |player| @loser = player if player.hp == 0 }
-  end
 end

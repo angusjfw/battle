@@ -2,7 +2,7 @@
   <% if @game.prev_move == 'attack' %>
     <h3><%= @game.active_player.name %> attacked 
     <%= @game.inactive_player.name %>...</h3>
-    <% if @game.prev_damage == 20 %>It was super effective!<% end %>
+    <% if @game.prev_damage >= 20 %>It was super effective!<% end %>
     <% if @game.prev_damage == 0 %>But he missed!<% end %>
     <%= @game.inactive_player.name %> took
     <%= @game.prev_damage %> damage!
