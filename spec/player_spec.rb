@@ -1,14 +1,12 @@
 describe Player do
-  name1 = 'Pikachu'
-  name2 = 'Bulbasaur'
-
-  subject(:player) { described_class.new(name1) }
-  let(:player2) { described_class.new(name2) }
+  name = 'Pikachu'
   default_hp = Player::DEFAULT_HP
+  
+  subject(:player) { described_class.new(name) }
 
   describe '#name' do
     it 'has a name' do
-      expect(player.name).to eq name1
+      expect(player.name).to eq name
     end
   end
 
@@ -20,7 +18,14 @@ describe Player do
 
   describe '#damage!' do
     it 'reduces hp by 10' do
-      expect{ player2.damage! 10 }.to change{ player2.hp }.by -10
+      expect{ player.damage! 10 }.to change{ player.hp }.by -10
+    end 
+  end
+
+  describe '#heal!' do
+    it 'increases hp by 10, capped at 60' do
+      player.damage! 5
+      expect{ player.heal! }.to change{ player.hp }.by 5
     end
   end
 end
