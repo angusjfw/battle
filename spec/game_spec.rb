@@ -1,8 +1,8 @@
 require 'game'
 
 describe Game do
-  let(:player1) { double :player1 }
-  let(:player2) { double :player2, damage!: nil, hp: 666 }
+  let(:player1) { double :player1, poison: 0 }
+  let(:player2) { double :player2, damage!: nil, hp: 666, poison: 0 }
   subject(:game) { described_class.new(player1, player2, false) }
 
   describe '#initialize' do
@@ -14,7 +14,7 @@ describe Game do
   describe '#attack' do
     it 'one player attacks another player' do
       expect(player2).to receive(:damage!)
-      game.attack!(player2)
+      game.attack!(player2, 'attack')
     end
   end
 

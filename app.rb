@@ -24,10 +24,11 @@ class Battle < Sinatra::Base
   end
 
   post '/attack' do
-    $game.attack! $game.inactive_player
+    move = params.keys[0]
+    $game.attack!($game.inactive_player, move)
     $game.switch_turns
     if $game.ai && $game.loser.nil?
-      $game.attack! $game.inactive_player
+      $game.attack!($game.inactive_player, 'attack')
       $game.switch_turns
     end
     redirect '/play'

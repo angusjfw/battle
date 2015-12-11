@@ -40,7 +40,8 @@
 <% if @game.loser.nil? %>
   <div id='<%= @game.active_player == @game.player1 ? 'player1':'player2' %>-controls'>
     <form action='/attack' method='post'>
-      <input type='submit' value='ATTACK!'>
+      <input type='submit' name='attack' value='ATTACK'>
+      <input type='submit' name='poison' value='POISON'>
     </form>
   </div>
 <% end %>

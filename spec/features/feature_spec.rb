@@ -26,7 +26,7 @@ describe 'Features' do
   feature 'Attack' do
     before do
       sign_in_and_play(player1, player2)
-      click_button("ATTACK!")
+      click_button("ATTACK")
     end
 
     scenario 'attack other player and get confirmation' do
@@ -38,7 +38,7 @@ describe 'Features' do
     before do
       sign_in_and_play(player1, player2)
       allow(Kernel).to receive(:rand).and_return 5
-      click_button("ATTACK!")
+      click_button("ATTACK")
     end
 
     scenario 'attacking reduces enemy hp' do

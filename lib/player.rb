@@ -1,10 +1,11 @@
 class Player
-  attr_reader :name, :hp
+  attr_reader :name, :hp, :poison
   DEFAULT_HP = 60
 
   def initialize name
     @name = name
     @hp = DEFAULT_HP
+    @poison = 0
   end
 
   def damage! damage
@@ -12,8 +13,19 @@ class Player
     @hp = 0 if hp < 0
   end
 
+  def poison!
+    @poison = 3
+  end
+
+  def poison_effect
+    @poison -= 1
+    @hp -= 7
+    @hp = 0 if hp < 0
+  end
+
   def revive!
     @hp = DEFAULT_HP
+    @poison = 0
     self
   end
 end

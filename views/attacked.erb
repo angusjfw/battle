@@ -1,5 +1,5 @@
 <% if @game.ai && @game.loser != @game.player2 %>
-  <% if @game.prev_move == :attack %>
+  <% if @game.prev_move == 'attack' %>
     <div id='attack-confirmation'>
       <h3><%= @game.active_player.name %> attacked 
       <%= @game.inactive_player.name %>...</h3>
@@ -11,7 +11,7 @@
   <% end %>
 <% end %>
 
-<% if @game.move == :attack %>
+<% if @game.move == 'attack' %>
   <div id='attack-confirmation'>
     <h3><%= @game.inactive_player.name %> attacked 
     <%= @game.active_player.name %>...</h3>
@@ -22,12 +22,31 @@
   </div>
 <% end %>
 
+
+<% if @game.ai && @game.loser != @game.player2 %>
+  <% if @game.prev_move == 'poison' %>
+    <div id='attack-confirmation'>
+      <h3><%= @game.active_player.name %> poisoned 
+      <%= @game.inactive_player.name %>...</h3>
+      He will take 7 poison damage for 3 turns.
+    </div>
+  <% end %>
+<% end %>
+
+<% if @game.move == 'poison' %>
+  <div id='attack-confirmation'>
+    <h3><%= @game.inactive_player.name %> poisoned 
+    <%= @game.active_player.name %>...</h3>
+    He will take 7 poison damage for 3 turns.
+  </div>
+<% end %>
+
 <% unless @game.loser.nil? %>
   <div id='loss-confirmation'>
     <h1><%= @game.loser.name %><br> has <br>fainted!
   </div>
   <form action='/restart'>
-    <input type='submit' value='Play again...'>
+    <input type='submit' value='Play again...' style='width: 200px;'>
   </form>
 <% end %>
 

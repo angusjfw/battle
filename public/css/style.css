@@ -24,6 +24,7 @@ input[type='submit'] {
   margin: 10px auto;
   font-family: 'PokemonSolid';
   font-size: 100%;
+  width: 135px;
   text-shadow: white 0px 0px 10px;
   display:block;
   background:#ccc;
@@ -85,7 +86,7 @@ input[type='submit'] {
 #player1-controls{
   position: absolute;
   display: block;
-  top: 450px;
+  top: 500px;
   float: left;
   left: 430px; 
 }
@@ -93,7 +94,7 @@ input[type='submit'] {
 #player2-controls{
   position: absolute;
   display: block;
-  top: 450px;
+  top: 500px;
   float: right;
   right: 430px; 
 }
