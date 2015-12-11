@@ -13,7 +13,7 @@ class Battle < Sinatra::Base
   post '/new-game' do
     ai = !!params['ai']
     hard = !!params['hard']
-    ai = hard
+    ai = true if hard
     name1 = params[:name1] == '' ? 'Pikachu':params[:name1]
     name2 = params[:name2] == '' ? 'Bulbasaur':params[:name2]
     $game = Game.new(Player.new(name1), Player.new(name2), ai, hard)
@@ -30,7 +30,7 @@ class Battle < Sinatra::Base
     type = params.keys[0]
     $game.take_turn(type)
     $game.switch_turns
-    ai_attack if $game.ai && $game.loser.nil?
+    ai_attack($game) if $game.ai && $game.loser.nil?
     redirect '/play'
   end
 
