@@ -47,10 +47,15 @@ input[type='submit'] {
 
 #loss-confirmation{
   position: relative;
-  top: 40px;
+  bottom: 45px;
   font-family: "PokemonSolid";
   text-shadow: white 0px 0px 10px;
   font-size: 125%;
+}
+
+#restart-button{
+  position: relative;
+  bottom: 90px;
 }
 
 #player1{

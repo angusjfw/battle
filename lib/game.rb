@@ -2,11 +2,11 @@ require_relative 'attack.rb'
 
 class Game
   include Attack
-  attr_reader :player1, :player2, :ai, :turns, :damage, :prev_damage, :move, 
-    :prev_move, :loser
+  attr_reader :player1, :player2, :ai, :hard,  :turns, :damage, :prev_damage, 
+    :move, :prev_move, :loser
 
-  def initialize(player1, player2, ai)
-    @player1, @player2, @ai = player1, player2, ai
+  def initialize(player1, player2, ai, hard)
+    @player1, @player2, @ai, @hard = player1, player2, ai, hard
     @turns, @damage, @prev_damage = 0, 0, 0
     @move, @prev_move, @loser = nil, nil, nil
     rand_start([player1, player2], ai)
@@ -40,7 +40,7 @@ class Game
     r = Kernel.rand(2)
     @players = [playas[r], playas[(r+1)%2]]
     if ai && active_player == player2
-      take_turn('attack')
+      take_turn('poison')
       switch_turns
     end
   end

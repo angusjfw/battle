@@ -12,9 +12,11 @@ class Battle < Sinatra::Base
   
   post '/sign-in' do
     ai = !!params['ai']
+    hard = !!params['hard']
+    ai = true if hard == true
     name1 = params[:name1] == '' ? 'Pikachu':params[:name1]
     name2 = params[:name2] == '' ? 'Bulbasaur':params[:name2]
-    $game = Game.new(Player.new(name1), Player.new(name2), ai)
+    $game = Game.new(Player.new(name1), Player.new(name2), ai, hard)
     redirect '/play'
   end     
 
@@ -28,15 +30,15 @@ class Battle < Sinatra::Base
     type = params.keys[0]
     $game.take_turn(type)
     $game.switch_turns
-    ai_attack_and_switch if $game.ai && $game.loser.nil?
+    ai_attack if $game.ai && $game.loser.nil?
     redirect '/play'
   end
 
   get '/restart' do
     player1 = $game.player1.revive!
     player2 = $game.player2.revive!
-    ai = $game.ai
-    $game = Game.new(player1, player2, ai)
+    ai, hard = $game.ai, $game.hard
+    $game = Game.new(player1, player2, ai, hard)
     redirect '/play'
   end
 

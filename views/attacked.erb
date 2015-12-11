@@ -1,49 +1,53 @@
-<% if @game.ai && @game.loser != @game.player2 %>
-  <% if @game.prev_move == 'attack' %>
-    <h3><%= @game.active_player.name %> attacked 
-    <%= @game.inactive_player.name %>...</h3>
-    <% if @game.prev_damage >= 20 %>It was super effective!<% end %>
-    <% if @game.prev_damage == 0 %>But he missed!<% end %>
-    <%= @game.inactive_player.name %> took
-    <%= @game.prev_damage %> damage!
+<div id='attack confirmation'>
+  <% if @game.ai && @game.loser != @game.player2 %>
+    <% if @game.prev_move == 'attack' %>
+      <h3><%= @game.active_player.name %> attacked 
+      <%= @game.inactive_player.name %>...</h3>
+      <% if @game.prev_damage >= 20 %>It was super effective!<% end %>
+      <% if @game.prev_damage == 0 %>But he missed!<% end %>
+      <%= @game.inactive_player.name %> took
+      <%= @game.prev_damage %> damage!
+    <% end %>
+    <% if @game.prev_move == 'poison' %>
+      <h3><%= @game.active_player.name %> poisoned 
+      <%= @game.inactive_player.name %>...</h3>
+      He will take 7 damage for 3 turns.
+    <% end %>
+    <% if @game.prev_move == 'heal' %>
+      <h3><%= @game.active_player.name %> has been healed!</h3>
+      He has recovered 10HP and is no longer poisoned. 
+    <% end %>
   <% end %>
-  <% if @game.prev_move == 'poison' %>
-    <h3><%= @game.active_player.name %> poisoned 
-    <%= @game.inactive_player.name %>...</h3>
+
+  <% if @game.move == 'attack' %>
+    <h3><%= @game.inactive_player.name %> attacked 
+    <%= @game.active_player.name %>...</h3>
+    <% if @game.damage >= 20 %>It's super effective!<% end %>
+    <% if @game.damage == 0 %>But he missed!<% end %>
+    <%= @game.active_player.name %> took
+    <%= @game.damage %> damage!
+  <% end %>
+
+  <% if @game.move == 'poison' %>
+    <h3><%= @game.inactive_player.name %> poisoned 
+    <%= @game.active_player.name %>...</h3>
     He will take 7 damage for 3 turns.
   <% end %>
-  <% if @game.prev_move == 'heal' %>
-    <h3><%= @game.active_player.name %> has been healed!</h3>
+
+  <% if @game.move == 'heal' %>
+    <h3><%= @game.inactive_player.name %> has been healed!</h3>
     He has recovered 10HP and is no longer poisoned. 
   <% end %>
-<% end %>
-
-<% if @game.move == 'attack' %>
-  <h3><%= @game.inactive_player.name %> attacked 
-  <%= @game.active_player.name %>...</h3>
-  <% if @game.damage >= 20 %>It's super effective!<% end %>
-  <% if @game.damage == 0 %>But he missed!<% end %>
-  <%= @game.active_player.name %> took
-  <%= @game.damage %> damage!
-<% end %>
-
-<% if @game.move == 'poison' %>
-  <h3><%= @game.inactive_player.name %> poisoned 
-  <%= @game.active_player.name %>...</h3>
-  He will take 7 damage for 3 turns.
-<% end %>
-
-<% if @game.move == 'heal' %>
-  <h3><%= @game.inactive_player.name %> has been healed!</h3>
-  He has recovered 10HP and is no longer poisoned. 
-<% end %>
+</div>
 
 <% unless @game.loser.nil? %>
   <div id='loss-confirmation'>
     <h1><%= @game.loser.name %><br> has <br>fainted!
   </div>
-  <form action='/restart'>
-    <input type='submit' value='Play again...' style='width: 200px;'>
-  </form>
+  <div id='restart-button'>
+    <form action='/restart'>
+      <input type='submit' value='Play again...' style='width: 200px;'>
+    </form>
+  </div>
 <% end %>
 
