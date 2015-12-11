@@ -10,10 +10,10 @@ class Battle < Sinatra::Base
     erb :index
   end
   
-  post '/sign-in' do
+  post '/new-game' do
     ai = !!params['ai']
     hard = !!params['hard']
-    ai = true if hard == true
+    ai = hard
     name1 = params[:name1] == '' ? 'Pikachu':params[:name1]
     name2 = params[:name2] == '' ? 'Bulbasaur':params[:name2]
     $game = Game.new(Player.new(name1), Player.new(name2), ai, hard)
