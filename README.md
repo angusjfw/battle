@@ -1,4 +1,4 @@
-#Pokémon Battle! [![Build Status](https://travis-ci.org/hibreez/battle.svg?branch=master)](https://travis-ci.org/hibreez/battle)[![Coverage Status](https://coveralls.io/repos/hibreez/battle/badge.svg?branch=master&service=github)](https://coveralls.io/github/hibreez/battle?branch=master)
+#Pokémon Battle! [![Build Status](https://travis-ci.org/hibreez/battle.svg?branch=master)](https://travis-ci.org/hibreez/battle) [![Coverage Status](https://coveralls.io/repos/hibreez/battle/badge.svg?branch=master&service=github)](https://coveralls.io/github/hibreez/battle?branch=master)
 
 Pikachu VS Bulbasaur Pokémon battle game. Play against a friend or the computer.  
 Built on Ruby's `erb` and [Sinatra](http://www.sinatrarb.com/); tested with [Rspec](http://rspec.info/) and [Capybara](https://github.com/jnicklas/capybara).
